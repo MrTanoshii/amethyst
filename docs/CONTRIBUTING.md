@@ -66,9 +66,9 @@ done the following things first:
    If this is not the case, run `rustup update` or install [rustfmt]
 3. All of the following commands completed without errors.
    * `cargo +stable fmt --all`
-   * `cargo clippy --all --features "empty"` (may require `cargo clean` before)
+   * `cargo clippy --workspace --features "empty"` (may require `cargo clean` before)
    * `cargo build --features "empty"`
-   * `cargo test --all --features "empty"`
+   * `cargo test --workspace --features "empty"`
    * `cargo run --example {example-name} --features YOUR_BACKEND`
 4. You have granted non-exclusive right to your source code under both the
    [MIT License][lm] and the [Apache License 2.0][la]. Unless you explicitly
@@ -94,8 +94,7 @@ developer, it will be merged into the source tree.
 The following rules shall be applied strictly for the `amethyst` repository. For other repositories of this organization,
 thorough review would be desirable, but no strict application is required there due to lower activity and less influence.
 
-* Pull Requests shall be approved by at least two members (two approvals from contributors can count as one member approval.)
-* Pull Requests opened by organization members may be merged if approved by one member.
+* Pull Requests shall be approved by at least one trusted contributor or member.
 * Merging a PR shall be done with `bors r+`, if possible. If there is more than one reviewer the preferred format is `bors r=@reviewer1, @reviewer2`. You can read more about this [here](https://bors.tech/documentation/).
 * You may only block merging of a PR if the changes in it are relevant to an org team you have joined. This doesn't mean you can't
 make comments, but it does mean that team may ignore your comments if they so choose. Please do not use the "Request Changes" feature if
@@ -270,7 +269,7 @@ Examples in `book/` can be tested with the following:
 # the amethyst repo, otherwise mdbook complains. You only need to do this once, unless you change code
 # in the actual amethyst library.
 rm -rf ./target/debug/deps/libamethyst*
-cargo test --workspace --features=empty --no-run
+cargo test --workspace --features=empty,tiles --no-run
 
 # Then, test the book.  You can edit, run this command, and then repeat until you get everything passing.
 # This is what the book tests in CI do, so the snippets in the book must pass before you can push.
